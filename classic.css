@@ -23,9 +23,14 @@ img{
     text-align: center;
 }
 
-body{
-    background-color: rgb(174, 233, 174)
-}
+body{font-family:Consolas,Hack,"Liberation Mono",monospace;
+    background-image: url(https://media.discordapp.net/attachments/1373399163429195829/1459701209081446482/02-34-11-741_512.gif?ex=69643c30&is=6962eab0&hm=b88e45b4d9e8ae5f9fcf08916431bc81f55ed7efaeeccb3d2a501c57dc27b00f&=);
+    background-attachment:fixed;
+    background-color:#000;
+    background-repeat:repeat;
+    line-height:1.15;
+    font-size:10pt;
+    overflow-y:scroll}
 
 .manoel{
     color: purple;
@@ -33,4 +38,44 @@ body{
     font-size: 69px;
     border: 1px solid rgb(208, 8, 208);
     text-align: center;
+}
+
+#caixeta-manoelica{
+    display: "flex";
+    flex-direction: column;
+    align-items: center;
+}
+
+#italo-secao{
+    display: "flex";
+    flex-direction: column;
+    align-items: center;
+}
+
+#fabio-secao{
+    display:"flex";
+    flex-direction: column;
+    align-items: center;
+}
+
+#francisco-botoes{
+    display: flex;
+    justify-content: center;
+    gap: 10px
+}
+
+#botao-italo{
+    width: 300px;
+    height: 40px;
+    cursor: pointer;
+}
+
+#botao-manoel{
+    width: 300px;
+    height: 40px;
+    cursor: pointer;
+}
+
+#botao-fabio{
+    cursor: pointer;
 }
