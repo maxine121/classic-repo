@@ -1,30 +1,35 @@
 .fabonnie{
     color: aqua;
-    font-size:100px;
-    border: 5px solid black;
-    padding: 50px;
+    font-size:50px;
     text-align:center;
 }
 img{
     width:300px;
     height:300px;
-    margin-right: 100;
 }
 
 .francisco-imagens{
     display: flex;
     flex-direction: column;
     align-items: center;
+    flex-wrap: wrap;
+    height: 860px;
 }
 
 .italo{
     color: red;
-    font-size: 90px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.cayork{
+    color: white;
+    font-size: 50px;
     text-align: center;
 }
 
 body{font-family:Consolas,Hack,"Liberation Mono",monospace;
-    background-image: url(https://media.discordapp.net/attachments/1373399163429195829/1459701209081446482/02-34-11-741_512.gif?ex=69643c30&is=6962eab0&hm=b88e45b4d9e8ae5f9fcf08916431bc81f55ed7efaeeccb3d2a501c57dc27b00f&=);
+    background-image: url(https://media.discordapp.net/attachments/1373399163429195829/1459701209081446482/02-34-11-741_512.gif?ex=6966df30&is=69658db0&hm=94ed0bf5593b2f39898028ceb55a7fa3dd59321a6473510857e59169bf1d3d24&=);
     background-attachment:fixed;
     background-color:#000;
     background-repeat:repeat;
@@ -35,7 +40,7 @@ body{font-family:Consolas,Hack,"Liberation Mono",monospace;
 .manoel{
     color: purple;
     font-family: 'Times New Roman';
-    font-size: 69px;
+    font-size: 50px;
     border: 1px solid rgb(208, 8, 208);
     text-align: center;
 }
@@ -53,6 +58,12 @@ body{font-family:Consolas,Hack,"Liberation Mono",monospace;
 }
 
 #fabio-secao{
+    display:"flex";
+    flex-direction: column;
+    align-items: center;
+}
+
+#caio-secao{
     display:"flex";
     flex-direction: column;
     align-items: center;
@@ -76,6 +87,31 @@ body{font-family:Consolas,Hack,"Liberation Mono",monospace;
     cursor: pointer;
 }
 
+#botao-caio{
+    width: 300px;
+    height: 40px;
+    cursor: pointer;
+}
+
 #botao-fabio{
     cursor: pointer;
+}
+
+.imagem{
+    width: 300px;
+    height: 300px;
+}
+
+#canto-easter-egg{
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+#easter-egg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
