@@ -1,46 +1,84 @@
 const secaoItalao = document.getElementById("italo-secao");
 const secaoManoel = document.getElementById("caixeta-manoelica");
 const secaoFabio = document.getElementById("fabio-secao");
-const botaoItalao = document.getElementById("botao-italo")
+const botaoItalao = document.getElementById("botao-italo");
 const botaoManoel = document.getElementById("botao-manoel");
+const botaoOtavio = document.getElementById("botao-otavio");
 const botaoFabio = document.getElementById("botao-fabio");
 const botaoCaio = document.getElementById("botao-caio");
 const secaoCaio = document.getElementById("caio-secao");
+const secoes = document.querySelector(".francisco-imagens");
+
+let selecionado = "";
 
 function funcaoItalao() {
-    if (secaoItalao.style.display === "none") {
-        secaoItalao.style.display = "flex";
+    if (selecionado === "italo") {
+        secoes.innerHTML = "";
+        selecionado = "";
     } else {
-        secaoItalao.style.display = "none";
+        selecionado = "italo";
+        secoes.innerHTML = `<div style="display: flex; flex-direction: column; align-items: center;" class="secao" id="italo-secao" >
+            <h1 class="italo">Bilompa</h1>
+            <img class="imagem" src="https://static.wikia.nocookie.net/65f08f96-529c-4af4-b8d4-0b72a982e467/scale-to-width/755"/>
+        </div>`
     }
 }
 
 function funcaoManoelica() {
-    if (secaoManoel.style.display === "none") {
-        secaoManoel.style.display = "flex";
+    if (selecionado === "manoel") {
+        secoes.innerHTML = "";
+        selecionado = "";
     } else {
-        secaoManoel.style.display = "none";
+        selecionado = "manoel";
+        secoes.innerHTML = `<div style="display: flex; flex-direction: column; align-items: center;" class="secao" id="caixeta-manoelica">
+            <h1 class="manoel">amostradinho awards</h1> 
+            <img class="imagem" src="https://m.media-amazon.com/images/I/41Kyl0hCAZL._UF894,1000_QL80_.jpg"/>
+        </div>`
+    }
+}
+
+function funcaoOtavica() {
+    if (selecionado === "otavio") {
+        secoes.innerHTML = "";
+        selecionado = "";
+    } else {
+        selecionado = "otavio";
+        secoes.innerHTML = `<div style="display: flex; flex-direction: column; align-items: center;" class="secao" id="otavio-secao">
+            <h1 class="otavio">Muelando na autoescola!</h1>
+            <img class="imagem" src="https://i.ytimg.com/vi/-1pwQdHU_8c/maxresdefault.jpg"/>
+        </div>`
     }
 }
 
 function funcaoFabio() {
-    if (secaoFabio.style.display === "none") {
-        secaoFabio.style.display = "flex";
+    if (selecionado === "fabio") {
+        secoes.innerHTML = "";
+        selecionado = "";
     } else {
-        secaoFabio.style.display = "none";
+        selecionado = "fabio";
+        secoes.innerHTML = `<div style="display: flex; flex-direction: column; align-items: center;" class="secao" id="fabio-secao">
+            <h1 class="fabonnie">borabillompa</h1>
+            <img class="imagem" src="https://static.jojowiki.com/images/thumb/6/69/latest/20201130220440/Jotaro_SC_Infobox_Manga.png/400px-Jotaro_SC_Infobox_Manga.png"/>
+        </div>`
     }
 }
 
 function funcaoCaio() {
-    if (secaoCaio.style.display === "none") {
-        secaoCaio.style.display = "flex";
+    if (selecionado === "caio") {
+        secoes.innerHTML = "";
+        selecionado = "";
     } else {
-        secaoCaio.style.display = "none";
+        selecionado = "caio";
+        secoes.innerHTML = `<div style="display: flex; flex-direction: column; align-items: center;" class="secao" id="caio-secao">
+            <h1 class="cayork">Olha o bingus miniiino</h1>
+            <img class="imagem" src="./assets/bingus.webp"/>
+        </div>`
     }
 }
 
 botaoItalao.addEventListener("click", funcaoItalao);
 botaoManoel.addEventListener("click", funcaoManoelica);
+botaoOtavio.addEventListener("click", funcaoOtavica);
 botaoFabio.addEventListener("click", funcaoFabio);
 botaoCaio.addEventListener("click", funcaoCaio);
 
@@ -48,13 +86,20 @@ botaoCaio.addEventListener("click", funcaoCaio);
 const easterInput = document.getElementById("input-easter-egg");
 const confirmarBotao = document.getElementById("confirmar");
 const easterEgg = document.getElementById("easter-egg");
-const easterMensagem = document.getElementById("easter-mensagem")
+const easterMensagem = document.getElementById("easter-mensagem");
+const cantoEaster = document.getElementById("canto-easter-egg");
 
-const senhaMeiaSete = /(?:67)|(?:meia|six) (?:sete|seven)/i;
+const senhaMeiaSete = /(?:67)|(?:seis|meia|six) (?:sete|seven)/i;
 const senhaFranciscao = /(?:classic|franciscao|banana)/i;
-const senhaLabubu = /(?:labubu)/i;
+const senhaLabubu = /[fl]abubu/i;
+const senhaBatata = /(?:batata frita|batata|frita)/i;
 
-confirmarBotao.addEventListener("click", () => {
+confirmarBotao.addEventListener = ("click", (e) => {
+    e.preventDefault();
+})
+
+cantoEaster.addEventListener("submit", (e) => {
+    e.preventDefault();
     const senha = easterInput.value;
     if (senha === "") {
         alert("Escreve alguma coisa! Frase, palavra, número...")
@@ -65,8 +110,12 @@ confirmarBotao.addEventListener("click", () => {
                                 <img src="https://www.thenews.com.pk/assets/uploads/updates/2025-09-01/1340580_7982010_fnl_updates.jpg" />`;
     } else if (senhaFranciscao.test(senha)) {
         easterEgg.innerHTML = `<h1 style="font-size: 150px; text-align: center; color: white; height: 40px;">classic.</h1>
-                                <img src="https://media.discordapp.net/attachments/1373399163429195829/1391222097778442402/Franciscao.jpg?ex=6966ea8b&is=6965990b&hm=332c8fdad57b4a75b0e2c67a43499b638882704e95cf5d65aa86292b58be5557&=&format=webp&width=864&height=842" />`;
+                                <img src="./assets/Captura de tela 2025-12-27 152020.png"/>`;
+    } else if (senhaLabubu.test(senha)) {
+        easterEgg.innerHTML = `<h1 style="font-size: 150px; text-align: center; color: white; height: 40px;">fabubu attack!</h1>
+                                <img src="./assets/fabubu.jpg"/>`;
     } else {
+        easterMensagem.textContent = "Sabe de nada!";
         easterEgg.innerHTML = "";
         return;
     }
@@ -76,30 +125,31 @@ confirmarBotao.addEventListener("click", () => {
     })
 })
 
-easterInput.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-        const senha = easterInput.value;
-        if (senha === "") {
-            alert("Escreve alguma coisa! Frase, palavra, número...")
-            return;
-        }
-        if (senhaMeiaSete.test(senha)) {
-            easterEgg.innerHTML = `<h1 style="font-size: 150px; text-align: center; color: white; height: 40px;">SIX SEVEN</h1>
-                                <img src="https://www.thenews.com.pk/assets/uploads/updates/2025-09-01/1340580_7982010_fnl_updates.jpg" />`;
-        } else if (senhaFranciscao.test(senha)) {
-            easterEgg.innerHTML = `<h1 style="font-size: 150px; text-align: center; color: white; height: 40px;">classic.</h1>
-                                <img src="https://media.discordapp.net/attachments/1373399163429195829/1391222097778442402/Franciscao.jpg?ex=6966ea8b&is=6965990b&hm=332c8fdad57b4a75b0e2c67a43499b638882704e95cf5d65aa86292b58be5557&=&format=webp&width=864&height=842" />`;
-        } else {
-            easterEgg.innerHTML = "";
-            easterMensagem.textContent = "errou!";
-            easterInput.value = "";
-            return;
-        }
-        easterMensagem.textContent = "acertou! Quer tentar outro easter egg?";
-        easterInput.value = "";
-        window.scrollTo({
-            top: 50,
-            behavior: 'smooth'
-        })
+const botaoPerguntar = document.getElementById("perguntar");
+const resposta = document.getElementById("resposta");
+const inputPergunta = document.getElementById("pergunta-input");
+
+const respostas = ["Fogo na área",
+    "Hmmm sei não Willis",
+    "Me dá uma banana e eu te digo",
+    "ÉÉÉÉÉ RAPAZ VAI FUNDO QUE É RASO",
+    "Sim",
+    "Não",
+    "Talvez hein",
+    "Te respondo no bar do pinto",
+    "Os timbus me disseram que não",
+    "Segundo Aldus com certeza!",
+    "Receba!",
+    "Tô embriagado demais pra responder...",
+    "Miniino!",
+    "AEEEE LUIZÃO"
+];
+
+botaoPerguntar.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (inputPergunta.value === "") {
+        resposta.textContent = "Escreve alguma coisa, ANIMAL.";
+        return;
     }
+    resposta.textContent = respostas[Math.floor(Math.random() * respostas.length)];
 })

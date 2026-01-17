@@ -9,37 +9,28 @@
 </head>
 <body>
         <div id="easter-egg"></div>
-    <div id="francisco-botoes">
-        <img src="https://images-ext-1.discordapp.net/external/hw09slT9v-e5MG6frkuptPzvknEsXmB-qHXz2SBKMDY/https/blinkies.cafe/b/blinkiesCafe-GH.gif" id="botao-italo" />
-        <img src="./assets/manoel_na_área.gif" id="botao-manoel" />
-        <button id="botao-fabio">Fabotão</button>
+    <div style="display: flex; gap: 8px; flex-wrap: wrap;" id="francisco-botoes">
+        <img src="./assets/blinkiesCafe-GH.gif" id="botao-italo" />
+        <img src="./assets/manoel_na_área1.gif" id="botao-manoel" />
+        <img src="./assets/apendiceDeOtavio.gif" id="botao-otavio"/>
+        <img src="https://blinkies.cafe/b/display/blinkiesCafe-badge.gif" id="botao-fabio">
         <button id="botao-caio">Caio alert</button>
     </div>
     <div class="francisco-imagens">
-        
-        <div style="display: none" class="secao" id="italo-secao" >
-            <h1 class="italo">Bilompa</h1>
-            <img class="imagem" src="https://static.wikia.nocookie.net/65f08f96-529c-4af4-b8d4-0b72a982e467/scale-to-width/755"/>
-        </div>
-        
-        <div style="display: none" class="secao" id="caixeta-manoelica">
-            <h1 class="manoel">amostradinho awards</h1> 
-            <img class="imagem" src="https://m.media-amazon.com/images/I/41Kyl0hCAZL._UF894,1000_QL80_.jpg"/>
-        </div>
-        
-        <div style="display: none" class="secao" id="fabio-secao">
-            <h1 class="fabonnie">borabillompa</h1>
-            <img class="imagem" src="https://static.jojowiki.com/images/thumb/6/69/latest/20201130220440/Jotaro_SC_Infobox_Manga.png/400px-Jotaro_SC_Infobox_Manga.png"/>
-        </div>
-        <div style="display: none" class="secao" id="caio-secao">
-            <h1 class="cayork">Olha o bingus miniiino</h1>
-            <img class="imagem" src="https://media.discordapp.net/attachments/1373399163429195829/1460432194278522971/bingus.jpg?ex=6966e4f8&is=69659378&hm=76ed5498c5c00393665561864b999c12ceb13f260e9eb8be64f22dd34df9de31&=&format=webp"/>
-        </div> 
+
     </div>
-    <div id="canto-easter-egg">
+    <form id="canto-easter-egg">
         <h2 id="easter-mensagem">Bem vindo ao cantinho dos easter eggs! Digite o código certo e quem sabe poderá ver por trás do véu?</h2>
         <input id="input-easter-egg" placeholder="Digite a senha" />
-        <button id="confirmar">Enviar</button>
+        <button type="submit" id="confirmar">Enviar</button>
+    </form>
+    <div style="display: flex; flex-direction: column; align-items: center; margin-top: 50px;">
+        <h2 style="color: white">Pergunta pra mim!</h2>
+        <img src="./assets/Franciscao.webp" />
+        <h1 style="color: purple">Pergunte a FRANCISCÃO!</h1>
+        <input style="margin-bottom: 20px;" id="pergunta-input" placeholder="Faça sua pergunta...">
+        <button type="submit" id="perguntar">Perguntar</button>
+        <h1 style="color: white" id="resposta"></h1>
     </div>
     <script src="classic.js"></script>
 </body>

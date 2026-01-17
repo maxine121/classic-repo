@@ -13,7 +13,7 @@ img{
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
-    height: 860px;
+    margin-bottom: 50px
 }
 
 .italo{
@@ -28,8 +28,14 @@ img{
     text-align: center;
 }
 
+.otavio{
+    color: pink;
+    font-size: 50px;
+    text-align: center;
+}
+
 body{font-family:Consolas,Hack,"Liberation Mono",monospace;
-    background-image: url(https://media.discordapp.net/attachments/1373399163429195829/1459701209081446482/02-34-11-741_512.gif?ex=6966df30&is=69658db0&hm=94ed0bf5593b2f39898028ceb55a7fa3dd59321a6473510857e59169bf1d3d24&=);
+    background-image: url(./assets/espaço_background.gif);
     background-attachment:fixed;
     background-color:#000;
     background-repeat:repeat;
@@ -87,6 +93,12 @@ body{font-family:Consolas,Hack,"Liberation Mono",monospace;
     cursor: pointer;
 }
 
+#botao-otavio{
+    width: 300px;
+    height: 40px;
+    cursor: pointer;
+}
+
 #botao-caio{
     width: 300px;
     height: 40px;
@@ -94,6 +106,8 @@ body{font-family:Consolas,Hack,"Liberation Mono",monospace;
 }
 
 #botao-fabio{
+    width: 300px;
+    height: 40px;
     cursor: pointer;
 }
 
