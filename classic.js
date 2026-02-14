@@ -153,3 +153,10 @@ botaoPerguntar.addEventListener("click", (e) => {
     }
     resposta.textContent = respostas[Math.floor(Math.random() * respostas.length)];
 })
+
+const classicBtn = document.getElementById("classic-btn");
+const classicVideo = document.getElementById("classic-video");
+
+classicBtn.addEventListener("click", () => {
+    classicVideo.classList.toggle("hidden");
+})
