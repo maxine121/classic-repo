@@ -93,6 +93,7 @@ const senhaMeiaSete = /(?:67)|(?:seis|meia|six) (?:sete|seven)/i;
 const senhaFranciscao = /(?:classic|franciscao|banana)/i;
 const senhaLabubu = /[fl]abubu/i;
 const senhaBatata = /(?:batata frita|batata|frita)/i;
+const senhaLuizao = /(?:luizao|luizão)/i;
 
 confirmarBotao.addEventListener = ("click", (e) => {
     e.preventDefault();
@@ -114,6 +115,12 @@ cantoEaster.addEventListener("submit", (e) => {
     } else if (senhaLabubu.test(senha)) {
         easterEgg.innerHTML = `<h1 style="font-size: 150px; text-align: center; color: white; height: 40px;">fabubu attack!</h1>
                                 <img src="./assets/fabubu.jpg"/>`;
+    } else if (senhaBatata.test(senha)) {
+        easterEgg.innerHTML = `<h1 style="font-size: 150px; text-align: center; color: white; height: 40px;">minha mãe comia batata frita...</h1>
+                                <img style="margin-top: 200px;" src="./assets/mae_batata.gif">`
+    } else if (senhaLuizao.test(senha)) {
+        easterEgg.innerHTML = `<h1 style="font-size: 150px; text-align: center; color: white; height: 40px;">aeeeee luizããão!!</h1>
+                                <img src="./assets/luizao_minions.gif"/>`;                 
     } else {
         easterMensagem.textContent = "Sabe de nada!";
         easterEgg.innerHTML = "";
