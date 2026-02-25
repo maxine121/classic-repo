@@ -1,3 +1,11 @@
+*{
+    color: white;
+}
+
+#perguntar{
+    color: black;
+}
+
 .fabonnie{
     color: aqua;
     font-size:50px;
@@ -50,6 +58,8 @@ body{font-family:Consolas,Hack,"Liberation Mono",monospace;
     border: 1px solid rgb(208, 8, 208);
     text-align: center;
 }
+
+
 
 #caixeta-manoelica{
     display: "flex";
@@ -130,13 +140,53 @@ body{font-family:Consolas,Hack,"Liberation Mono",monospace;
     align-items: center;
 }
 
-#classic-entrevista{
+#classic-rpg{
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 600px;
 }
 
-.hidden{
-    display: none;
+#rpg-texto, #escolhas{
+    font-family:monospace;
+    font-size: 22px;
+}
+
+#palavra-chave{
+    color: gold;
+}
+
+#caio, #manoel, #fabio, #otavio{
+    cursor: pointer;
+}
+
+#continuar-btn{
+    margin-top: 10px;
+    color: black;
+}
+
+.pequeno{
+    width: 140px;
+    height: 140px;
+}
+
+.preto{
+    color: black;
+}
+
+#versus-container{
+    display: flex;
+    gap: 160px;
+}
+
+#canto-heroi{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#canto-inimigo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -161,9 +161,278 @@ botaoPerguntar.addEventListener("click", (e) => {
     resposta.textContent = respostas[Math.floor(Math.random() * respostas.length)];
 })
 
-const classicBtn = document.getElementById("classic-btn");
-const classicVideo = document.getElementById("classic-video");
+//SEÇÃO RPG WIP -----------------------------------------------------------
 
-classicBtn.addEventListener("click", () => {
-    classicVideo.classList.toggle("hidden");
+const rpgContainer = document.getElementById("rpg-container-atual");
+const rpgTexto = document.getElementById("rpg-texto");
+const rpgEscolhas = document.getElementById("escolhas");
+
+const continuarBtn = document.getElementById("continuar-btn");
+
+continuarBtn.disabled = true;
+continuarBtn.style.cursor = "not-allowed";
+
+const personagens = [
+    {
+        nome: "Caio",
+        hp: 100,
+        ataques: [
+            {
+                nome: "Cajadada",
+                dano: 5,
+                custoMana: 0
+            },
+            {
+                nome: "Bola de fogo (10 mana)",
+                dano: 15,
+                custoMana: 10
+            }
+        ],
+        mana: 40,
+        imagem: "https://i.postimg.cc/Bb73x5PP/Mago-caio.png"
+    },
+    {
+        nome: "Otávio",
+        hp: 150,
+        ataques: [
+            {
+                nome: "Soco",
+                dano: 5,
+                custoMana: 0
+            },
+            {
+                nome: "Atropelar (10 mana)",
+                dano: 20,
+                custoMana: 10
+            }
+        ],
+        mana: 20,
+        imagem: "https://i.postimg.cc/1tNDxMPj/cavaleiro-otavio.png"
+    },
+    {
+        nome: "Manoel",
+        hp: 120,
+        ataques: [
+            {
+                nome: "Flechada",
+                dano: 5,
+                custoMana: 0
+            },
+            {
+                nome: "Timbus e suas aventuras (5 mana)",
+                dano: 10,
+                custoMana: 5
+            }
+        ],
+        mana: 30,
+        imagem: "https://i.postimg.cc/JhFdcTPF/manoel-arqueiro.png"
+    },
+    {
+        nome: "Fábio",
+        hp: 67,
+        ataques: [
+            {
+                nome: "Mordida",
+                dano: 5,
+                custoMana: 0
+            },
+            {
+                nome: "Tiro de Glock (20 mana)",
+                dano: 20,
+                custoMana: 20
+            }
+        ],
+        mana: 15,
+        imagem: "https://i.postimg.cc/httB2510/fabio-atirador.png"
+    }
+]
+
+const inimigos = [{
+    nome: "Tutorialdus",
+    hp: 50,
+    ataque: 5,
+    imagem: "https://i.postimg.cc/Cxnd19yX/Captura-de-tela-2025-12-27-232200.png"
+},
+{
+    nome: "João Camposnês",
+    hp: 15,
+    ataque: 67,
+    imagem: "https://i.postimg.cc/rFN29J1V/campos.png"
+},
+{
+    nome: "Xitalo",
+    hp: 50,
+    ataque: 10,
+    imagem: "https://i.postimg.cc/rm2LJYPj/italo-malvado.png"
+}];
+
+rpgContainer.innerHTML = `
+<img id="caio" src=${personagens[0].imagem} />
+<img id="otavio" src=${personagens[1].imagem} />
+<img id="manoel" src=${personagens[2].imagem} />
+<img id="fabio" src=${personagens[3].imagem} />`
+
+const caioEscolha = document.getElementById("caio");
+const otavioEscolha = document.getElementById("otavio");
+const manoelEscolha = document.getElementById("manoel");
+const fabioEscolha = document.getElementById("fabio");
+
+let personagem = {};
+
+const mostrarBatalha = (batalhaNumero) => {
+    continuarBtn.disabled = true;
+    continuarBtn.style.cursor = "not-allowed"; 
+    if (batalhaNumero === 1) {
+        
+        if (inimigos[0].hp <= 0) {
+            rpgEscolhas.textContent = "A sua vitória chamou a atenção de alguém importante..."
+            rpgContainer.innerHTML = `<img src=${personagem.imagem} />`
+            rpgTexto.textContent = "Se atreve a continuar?"
+            continuarBtn.disabled = false;
+            continuarBtn.style.cursor = "pointer"; 
+            return;
+        }
+        if (personagem.hp <= 0) {
+            rpgEscolhas.textContent = "Você PERDEU a demo! KKKKKKKKKKK PRA ALDUS!"
+            rpgContainer.innerHTML = `<img src=${personagem.imagem} />`
+            rpgTexto.textContent = "O jogo final sai em breve."
+            return;
+        }
+        rpgEscolhas.textContent = "Hora da batalha! Tutorialdus se aproxima com um tabuleiro de xadrez!"
+        rpgContainer. innerHTML = `
+        <div id="versus-container">
+            <div id="canto-heroi">
+                <h2>${personagem.nome}</h2>
+                <img class="pequeno" src=${personagem.imagem} />
+                <p>HP: ${personagem.hp}</p>
+                <p>Mana: ${personagem.mana}</p>
+                <button class="preto" id="ataque-normal">${personagem.ataques[0].nome}</button>
+                <button class="preto" id="ataque-especial" ${personagem.mana >= personagem.ataques[1].custoMana ? null : "disabled"}>${personagem.ataques[1].nome}</button>
+            </div>
+            <div id="canto-inimigo">
+                <h2>${inimigos[0].nome}</h2>
+                <img class="pequeno" src=${inimigos[0].imagem} />
+                <p>HP: ${inimigos[0].hp}</p>
+            </div>
+        </div>
+        `
+
+        const ataqueNormal = document.getElementById("ataque-normal");
+        const ataqueEspecial = document.getElementById("ataque-especial");
+        ataqueNormal.addEventListener("click", () => {
+        personagem.hp -= inimigos[0].ataque;
+        inimigos[0].hp -= personagem.ataques[0].dano;
+        mostrarBatalha(batalhas);
+        });
+
+        ataqueEspecial.addEventListener("click", () => {
+            personagem.hp -= inimigos[0].ataque;
+            inimigos[0].hp -= personagem.ataques[1].dano;
+            personagem.mana -= personagem.ataques[1].custoMana;
+            mostrarBatalha(batalhas);
+        });
+    }
+    if (batalhaNumero === 2) {
+        
+        if (inimigos[1].hp <= 0) {
+            rpgEscolhas.textContent = "Você Venceu a demo!"
+            rpgContainer.innerHTML = `<img src=${personagem.imagem} />`
+            rpgTexto.textContent = "O jogo final sai em breve."
+            rpgTexto.style.color = "yellow";
+            rpgTexto.style.fontSize = "30px";
+            continuarBtn.disabled = false;
+            continuarBtn.style.cursor = "pointer"; 
+            return;
+        }
+        if (personagem.hp <= 0) {
+            rpgEscolhas.textContent = "Você PERDEU a demo! KKKKKKKKKKK PRA JC!"
+            rpgContainer.innerHTML = `<img src=${personagem.imagem} />`
+            rpgTexto.style.color = "yellow";
+            rpgTexto.style.fontSize = "30px";
+            rpgTexto.textContent = "Dica: JC causa 67 de dano."
+            return;
+        }
+        if (personagem.nome === "Fábio") {
+            rpgTexto.textContent = "Luizão deu um pente pra Glock de Fábio! Aeeee Luizão!";
+            rpgTexto.style.color = "yellow";
+            rpgTexto.style.fontSize = "30px";
+            personagem.mana = 67;
+        }
+        rpgEscolhas.textContent = "Hora da batalha! João Camposnês chega com tudo em Recífia!"
+        rpgContainer. innerHTML = `
+        <div id="versus-container">
+            <div id="canto-heroi">
+                <h2>${personagem.nome}</h2>
+                <img class="pequeno" src=${personagem.imagem} />
+                <p>HP: ${personagem.hp}</p>
+                <p>Mana: ${personagem.mana}</p>
+                <button class="preto" id="ataque-normal">${personagem.ataques[0].nome}</button>
+                <button class="preto" id="ataque-especial" ${personagem.mana >= personagem.ataques[1].custoMana ? null : "disabled"}>${personagem.ataques[1].nome}</button>
+            </div>
+            <div id="canto-inimigo">
+                <h2>${inimigos[1].nome}</h2>
+                <img class="pequeno" src=${inimigos[1].imagem} />
+                <p>HP: ${inimigos[1].hp}</p>
+            </div>
+        </div>
+        `
+
+        const ataqueNormal = document.getElementById("ataque-normal");
+        const ataqueEspecial = document.getElementById("ataque-especial");
+        ataqueNormal.addEventListener("click", () => {
+        personagem.hp -= inimigos[1].ataque;
+        inimigos[1].hp -= personagem.ataques[0].dano;
+        mostrarBatalha(batalhas);
+        });
+
+        ataqueEspecial.addEventListener("click", () => {
+            personagem.hp -= inimigos[1].ataque;
+            inimigos[1].hp -= personagem.ataques[1].dano;
+            personagem.mana -= personagem.ataques[1].custoMana;
+            mostrarBatalha(batalhas);
+        });
+    }
+}
+
+const mostrarPersonagem = (personagem) => {
+    rpgContainer.innerHTML = `<img src=${personagem.imagem} />`
+    rpgEscolhas.textContent = "Seu personagem:";
+    continuarBtn.disabled = false;
+    continuarBtn.style.cursor = "pointer";
+}
+
+caioEscolha.addEventListener("click", () => {
+    personagem = personagens[0];
+    rpgTexto.textContent = "Caio, o grande mago, encara o desafio! Com seu grande cajado Lá Ele, pode lançar bolas de fogo!"
+    mostrarPersonagem(personagem);
 })
+
+otavioEscolha.addEventListener("click", () => {
+    personagem = personagens[1];
+    rpgTexto.textContent = "Pode não ser tão inteligente, mas esse guerreiro compensa na força bruta! Ele tem um soco potente e uma CNH!"
+    mostrarPersonagem(personagem);
+})
+
+manoelEscolha.addEventListener("click", () => {
+    personagem = personagens[2];
+    rpgTexto.textContent = "Um arqueiro ágil e astuto! Fortemente ligado com os Timbus do CB."
+    mostrarPersonagem(personagem);
+})
+
+fabioEscolha.addEventListener("click", () => {
+    personagem = personagens[3];
+    rpgTexto.textContent = "Não se meta com ele! Fábio, um agiota barra pesada, está preparado para tudo com sua Glock sem balas! Pera...";
+    mostrarPersonagem(personagem);
+})
+
+let batalhas = 0;
+
+continuarBtn.addEventListener("click", () => {
+    batalhas++;
+    mostrarBatalha(batalhas);
+    
+
+})
+
+
+
